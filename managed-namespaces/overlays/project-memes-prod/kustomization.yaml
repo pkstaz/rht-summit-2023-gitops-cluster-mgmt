@@ -28,3 +28,5 @@ patches:
     - op: replace
       path: /spec/hard/memory
       value: 1Gi
+resources:
+- rbac.yaml      
