@@ -14,4 +14,4 @@ subjects:
   # them edit access in the project-memes-dev namespace
   - kind: User
     name: foo
-    namespace: project-memes-dev
+    namespace: project-memes-prod
