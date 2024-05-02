@@ -1,14 +1,17 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: openshift-gitops-argocd-application-controller_edit_role"
+  name: memes-dev-editors
   namespace: project-memes-prod
 roleRef:
-  name: edit
+  # The role being bound. In this case we're re-using the existing
+  # edit role that's defined at cluster scope
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
+  name: view
 subjects:
-- kind: ServiceAccount
-  name: openshift-gitops-argocd-application-controller
-  # apiGroup: "rbac.authorization.k8s.io"
-  namespace: openshift-gitops
+  # Make user "foo" a subject of this role, thus granting
+  # them edit access in the project-memes-dev namespace
+  - kind: User
+    name: foo
+    namespace: project-memes-dev
